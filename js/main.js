@@ -2,19 +2,19 @@
 //формула нахождения числа взята из https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 const getRandomNumber = (min = '1', max = '2') => {
 
-  if(min >= 0 && max >= 0) {
+  if(min >= 0 && max >= 0 && min < max) {
 
     return Math.random() * (max - min) + min;
   }
   else {
-    return 'введенные числа меньше 0';
+    throw new RangeError('введенное число меньше 0 или минимальное число больше максимального');
   }
 };
 
 // Функция для проверки максимальной длины строки.
 // Будет использоваться для проверки длины введённого комментария, но должна быть универсальна.
 
-const getStringLength = (string = 'строка', maxLength = '140') => string.length > maxLength;
+const checkStringLength = (string = 'строка', maxLength = '140') => string.length < maxLength;
 
 getRandomNumber(1,10);
-getStringLength('Привет, я строка, я не более 140 симвлолв', 140);
+checkStringLength('Привет, я строка, я не более 140 симвлолв', 140);

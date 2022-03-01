@@ -13,8 +13,6 @@ const getRandomNumber = (min = '1', max = '2') => {
 
 const checkStringLength = (string = 'строка', maxLength = '140') => string.length <= maxLength;
 
-checkStringLength();
-
 const sms = [
   'Всё отлично!', 'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -28,19 +26,19 @@ const names = [
 ];
 //массив в именами
 
-const CreateObject = () => ({
-  id: getRandomNumber(1, 25),
-  url: 'img/getRandomNumber(1, 25).jpg',
-  description: 'Строка, описание фотографии',
-  likes: getRandomNumber(15, 200),
-  comments: [{
-    id: getRandomNumber(1, 1000000),
-    avatar: 'img/avatar-{{ getRandomNumber(1, 6)}}.svg',
-    message: sms[getRandomNumber(0, 5)],
-    name: names[getRandomNumber(0, 6)]
-  }],
+const createComment = () => ({
+  id: getRandomNumber(1, 1000000),
+  avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+  message: sms[getRandomNumber(0, 5)],
+  name: names[getRandomNumber(0, 6)]
 });
 
-const someObject = Array.from({ length: 25 }, CreateObject);
+const createObject = () => ({
+  id: getRandomNumber(1, 25),
+  url: `img/${getRandomNumber(1, 25)}.jpg`,
+  description: 'Строка, описание фотографии',
+  likes: getRandomNumber(15, 200),
+  comments: Array.from({ length: getRandomNumber(1, 100) }, createComment)
+});
 
-someObject();
+const someObject = Array.from({ length: 25 }, createObject);

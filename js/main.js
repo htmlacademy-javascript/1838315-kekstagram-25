@@ -1,4 +1,2 @@
-import { createObject } from './util.js';
-import { } from './getPicture/js';
-
-const someObject = Array.from({ length: 25 }, createObject);
+import { } from './getPicture.js';
+import './popup.js';

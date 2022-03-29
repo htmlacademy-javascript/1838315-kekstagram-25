@@ -1,2 +1,3 @@
-import { } from './getPicture.js';
-import './popup.js';
+import { Miniaturefucntion } from './popup.js';
+
+Miniaturefucntion();

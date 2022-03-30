@@ -23,10 +23,15 @@ const createComment = () => ({
 
 const createObject = () => ({
   id: getRandomNumber(1, 25),
-  url: `img/${getRandomNumber(1, 25)}.jpg`,
+  url: `photos/${getRandomNumber(1, 25)}.jpg`,
   description: 'Строка, описание фотографии',
   likes: getRandomNumber(15, 200),
   comments: Array.from({ length: getRandomNumber(1, 100) }, createComment)
 });
 
-export { createObject };
+const SIMILAR_OBJECT_COUNT = 4;
+
+const createArrayObject = () => Array.from({ length: SIMILAR_OBJECT_COUNT }, createObject);
+
+export { createArrayObject };
+

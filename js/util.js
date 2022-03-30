@@ -4,7 +4,8 @@ const getRandomNumber = (min = '1', max = '2') => {
 
   if (min >= 0 && max >= 0 && min < max) {
 
-    return Math.random() * (max - min) + min;
+    return Math.floor(Math.random() * (max - min) + min);
+
   }
 };
 

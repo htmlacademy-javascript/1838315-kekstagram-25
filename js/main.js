@@ -1,3 +1,3 @@
-import { Miniaturefucntion } from './popup.js';
-
+import { Miniaturefucntion } from './miniature.js';
 Miniaturefucntion();
+

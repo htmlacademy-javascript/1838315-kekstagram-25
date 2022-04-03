@@ -10,27 +10,25 @@ const bodyElement = document.body;
 
 
 const Miniaturefucntion = function () {
-
-
-  similarMiniatur.forEach(({ url, likes, commentsLength, description }) => {
+  similarMiniatur.forEach(({ url, likes, comments, description }) => {
     const miniatureElement = similarMiniatureTemplate.cloneNode(true);
     miniatureElement.querySelector('.picture__img').src = url;
     miniatureElement.querySelector('.picture__likes').textContent = likes;
-    miniatureElement.querySelector('.picture__comments').textContent = commentsLength;
+    miniatureElement.querySelector('.picture__comments').textContent = comments.length;
     similarListFragment.appendChild(miniatureElement); // Заполняю обьект и вставляю в docFragment
     miniatureElement.addEventListener('click', (evt) => {
       evt.preventDefault();
-      fillPopup(url, commentsLength, likes, description);
-      closeButton.addEventListener('click', () => { // при нажатии кнопки появляется hidden и убирается modal-open
+      fillPopup(url, comments, likes, description);
+    });
+    closeButton.addEventListener('click', () => { // при нажатии кнопки появляется hidden и убирается modal-open
+      bodyElement.classList.remove('modal-open');
+      popup.classList.add('hidden');
+    });
+    window.addEventListener('keydown', (e) => { // при нажатии Esc попап закрывается
+      if (e.key === 'Escape') {
         bodyElement.classList.remove('modal-open');
         popup.classList.add('hidden');
-      });
-      miniatureElement.addEventListener('keydown', (e) => {
-        if (e.key === 27) {
-          bodyElement.classList.remove('modal-open');
-          popup.classList.add('hidden');
-        }
-      });
+      }
     });
   });
 

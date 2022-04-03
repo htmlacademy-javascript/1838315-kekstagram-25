@@ -14,11 +14,19 @@ const names = [
 
 //массив с именами
 
-const createRandomAvatar = () => `img/${getRandomNumber(1, 7)}.svg`;
+const createRandomAvatar = () => {
+  const i = getRandomNumber(1, 7);
+  return `img/avatar-${i}.svg`;
+};
 
-const createRandomName = () => names.getRandomNumber(1, 8);
-
-const createRandomSms = () => sms.getRandomNumber(1, 6);
+const createRandomName = () => {
+  const i = getRandomNumber(1, 8);
+  return names[i];
+};
+const createRandomSms = () => {
+  const i = getRandomNumber(1, 6);
+  return sms[i];
+};
 
 const createComment = () => ({
   id: getRandomNumber(1, 1000000),

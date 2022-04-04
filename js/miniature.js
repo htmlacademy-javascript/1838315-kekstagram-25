@@ -7,7 +7,12 @@ const similarListFragment = document.createDocumentFragment();
 const closeButton = document.querySelector('.big-picture__cancel');
 const popup = document.querySelector('.big-picture');
 const bodyElement = document.body;
-
+const OnClick = (e) => {
+  if (e.key === 'Escape') {
+    bodyElement.classList.remove('modal-open');
+    popup.classList.add('hidden');
+  }
+};
 
 const Miniaturefucntion = function () {
   similarMiniatur.forEach(({ url, likes, comments, description }) => {
@@ -24,12 +29,10 @@ const Miniaturefucntion = function () {
       bodyElement.classList.remove('modal-open');
       popup.classList.add('hidden');
     });
-    window.addEventListener('keydown', (e) => { // при нажатии Esc попап закрывается
-      if (e.key === 'Escape') {
-        bodyElement.classList.remove('modal-open');
-        popup.classList.add('hidden');
-      }
-    });
+    window.addEventListener('keydown', OnClick);  // при нажатии Esc попап закрывается);
+    if (miniatureElement.classList.contains('hidden') === true) {
+      window.removeEventListener('keydown', OnClick);
+    }
   });
 
   similarMiniatureList.appendChild(similarListFragment); // Вставляю из фрагмента в блок

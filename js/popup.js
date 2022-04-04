@@ -33,7 +33,7 @@ const fillPopup = function (src, comments, likes, description) {
     p.classList.add('.social__text');
     p.textContent = createRandomSms();
     li.append(p);
-  };
+  }
   commentsSocialCount.classList.add('hidden');
   commenstLoader.classList.add('hidden');
 };

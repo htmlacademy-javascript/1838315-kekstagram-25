@@ -14,6 +14,20 @@ const names = [
 
 //массив с именами
 
+const createRandomAvatar = () => {
+  const i = getRandomNumber(1, 7);
+  return `img/avatar-${i}.svg`;
+};
+
+const createRandomName = () => {
+  const i = getRandomNumber(1, 8);
+  return names[i];
+};
+const createRandomSms = () => {
+  const i = getRandomNumber(1, 6);
+  return sms[i];
+};
+
 const createComment = () => ({
   id: getRandomNumber(1, 1000000),
   avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
@@ -33,5 +47,5 @@ const SIMILAR_OBJECT_COUNT = 4;
 
 const createArrayObject = () => Array.from({ length: SIMILAR_OBJECT_COUNT }, createObject);
 
-export { createArrayObject };
+export { createArrayObject, createRandomAvatar, createRandomName, createRandomSms };
 

@@ -5,7 +5,7 @@ const formInput = document.querySelector('#upload-file');
 const closeFormButton = document.querySelector('#upload-cancel');
 const hashtaginput = document.querySelector('.text__hashtags');
 const formTextarea = document.querySelector('.text__description');
-const re = /[A-Za-zА-Яа-яЁё0-9#]{0,19}$/;
+const re = /^#[A-Za-zА-Яа-яЁё0-9]{0,19}$/;
 
 const onWindowFormKeydown = (e) => { // при нажатии на ескейп форма закрывается
   if (e.key === 'Escape') {
@@ -61,13 +61,14 @@ pristine.addValidator(hashtaginput, validateNickname);
 pristine.addValidator(formTextarea, validateTextarea);
 
 form.addEventListener('submit', (evt) => {
-  evt.preventDefault();
 
-  const isValid = pristine.validate();
+  const isValid = pristine.validate(evt);
+  if (!isValid) {
+    evt.preventDefault();
+    console.log('Форма невалидна');
+  }
   if (isValid) {
     console.log('Можно отправлять');
-  } else {
-    console.log('Форма невалидна');
   }
 });
 

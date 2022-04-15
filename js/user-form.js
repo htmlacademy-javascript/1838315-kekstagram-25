@@ -54,7 +54,32 @@ const validateTextarea = function (value) { // проверка textarea на д
 };
 
 const validateNickname = function (value) { // проверка инпута на хэштеги и длину
-  return !value.length || (checkStringLength(value, 40) && re.test(value));
+  const space = ' ';
+  const string = value.split(space);
+  const setString = new Set(string);
+  const firstCheck = !value.length || (checkStringLength(value, 40));
+  if (!firstCheck) {
+    return false;
+  }
+  // console.log('stringlength', string.length);
+  // console.log('firstCheck = ', firstCheck);
+  if (string.length > 5) {
+    return false;
+  }
+  if (string.length <= 5) {
+    for (let i = 0; i < string.length; i++) {
+      const testString = re.test(string[i]);
+      if (string[i] !== testString) {
+        return false;
+      }
+    }
+    if (setString.length !== string.length) {
+      return false;
+    }
+    if (setString.length === string.length) {
+      return true;
+    }
+  }
 };
 
 pristine.addValidator(hashtaginput, validateNickname);
@@ -71,5 +96,3 @@ form.addEventListener('submit', (evt) => {
     console.log('Можно отправлять');
   }
 });
-
-

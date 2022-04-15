@@ -37,6 +37,7 @@ closeButton.addEventListener('click', () => { // при нажатии кноп�
   popup.classList.add('hidden');
 });
 
-// при нажатии Esc попап закрывается);
+
+// window.removeEventListener('keydown', onWindowKeydown);
 
 export { createMiniatures };

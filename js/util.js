@@ -14,4 +14,4 @@ const getRandomNumber = (min = '1', max = '2') => {
 
 const checkStringLength = (string = 'строка', maxLength = '140') => string.length <= maxLength;
 
-export { getRandomNumber };
+export { getRandomNumber, checkStringLength };
